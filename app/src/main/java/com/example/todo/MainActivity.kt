@@ -18,12 +18,17 @@ import com.example.todo.model.Priority
 import com.example.todo.ui.TaskAdapter
 import com.example.todo.ui.TaskViewModel
 import com.example.todo.ui.TaskViewModelFactory
+import androidx.core.widget.addTextChangedListener
+import com.example.todo.model.Task
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
     private val vm: TaskViewModel by viewModels {
         TaskViewModelFactory(application)
     }
+    private var allTasks: List<Task> = emptyList()
+    private var currentQuery: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = TaskAdapter(onToggle = vm::toggleDone)
         b.recycler.layoutManager = LinearLayoutManager(this)
         b.recycler.adapter = adapter
+        b.edtSearch.addTextChangedListener { text ->
+            currentQuery = text?.toString().orEmpty()
+            applyFilter(adapter)
+        }
+
 
         val helper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
@@ -53,11 +63,24 @@ class MainActivity : AppCompatActivity() {
         helper.attachToRecyclerView(b.recycler)
 
         lifecycleScope.launch {
-            vm.tasks.collectLatest { adapter.submitList(it.toList()) }
+            vm.tasks.collectLatest { tasks ->
+                allTasks = tasks
+                applyFilter(adapter)
+            }
         }
 
         b.fabAdd.setOnClickListener { showAddDialog() }
     }
+    private fun applyFilter(adapter: TaskAdapter) {
+        val filtered = if (currentQuery.isBlank()) {
+            allTasks
+        } else {
+            val q = currentQuery.lowercase()
+            allTasks.filter { it.title.lowercase().contains(q) }
+        }
+        adapter.submitList(filtered)
+    }
+
 
     private fun showAddDialog() {
         val dialogBinding = DialogAddTaskBinding.inflate(LayoutInflater.from(this))

@@ -4,6 +4,8 @@ package com.example.todo.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -21,14 +23,23 @@ public final class ActivityMainBinding implements ViewBinding {
   private final CoordinatorLayout rootView;
 
   @NonNull
+  public final LinearLayout content;
+
+  @NonNull
+  public final EditText edtSearch;
+
+  @NonNull
   public final FloatingActionButton fabAdd;
 
   @NonNull
   public final RecyclerView recycler;
 
-  private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull FloatingActionButton fabAdd, @NonNull RecyclerView recycler) {
+  private ActivityMainBinding(@NonNull CoordinatorLayout rootView, @NonNull LinearLayout content,
+      @NonNull EditText edtSearch, @NonNull FloatingActionButton fabAdd,
+      @NonNull RecyclerView recycler) {
     this.rootView = rootView;
+    this.content = content;
+    this.edtSearch = edtSearch;
     this.fabAdd = fabAdd;
     this.recycler = recycler;
   }
@@ -60,6 +71,18 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.content;
+      LinearLayout content = ViewBindings.findChildViewById(rootView, id);
+      if (content == null) {
+        break missingId;
+      }
+
+      id = R.id.edtSearch;
+      EditText edtSearch = ViewBindings.findChildViewById(rootView, id);
+      if (edtSearch == null) {
+        break missingId;
+      }
+
       id = R.id.fabAdd;
       FloatingActionButton fabAdd = ViewBindings.findChildViewById(rootView, id);
       if (fabAdd == null) {
@@ -72,7 +95,8 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((CoordinatorLayout) rootView, fabAdd, recycler);
+      return new ActivityMainBinding((CoordinatorLayout) rootView, content, edtSearch, fabAdd,
+          recycler);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -4,6 +4,8 @@ array priorities
 drawable ic_add_24
 id checkDone
 id chipPriority
+id content
+id edtSearch
 id edtTitle
 id fabAdd
 id recycler

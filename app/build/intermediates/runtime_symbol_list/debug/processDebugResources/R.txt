@@ -3268,6 +3268,7 @@ int id east 0x7f0900ab
 int id edge 0x7f0900ac
 int id edit_query 0x7f0900ad
 int id edit_text_id 0x7f0900ae
+int id edtSearch 0x7f0901fd
 int id edtTitle 0x7f0900af
 int id elastic 0x7f0900b0
 int id embed 0x7f0900b1
