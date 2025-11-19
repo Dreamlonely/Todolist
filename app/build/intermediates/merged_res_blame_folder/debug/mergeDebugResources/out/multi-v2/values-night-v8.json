@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.todo.app-mergeDebugResources-35:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.todo.app-mergeDebugResources-39:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Jonas\\.gradle\\caches\\8.13\\transforms\\5be401eed53aa17777486f631a7dd80b\\transformed\\appcompat-1.7.0\\res\\values-night-v8\\values-night-v8.xml",

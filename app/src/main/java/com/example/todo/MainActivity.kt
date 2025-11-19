@@ -17,10 +17,13 @@ import com.example.todo.databinding.DialogAddTaskBinding
 import com.example.todo.model.Priority
 import com.example.todo.ui.TaskAdapter
 import com.example.todo.ui.TaskViewModel
+import com.example.todo.ui.TaskViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
-    private val vm: TaskViewModel by viewModels()
+    private val vm: TaskViewModel by viewModels {
+        TaskViewModelFactory(application)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

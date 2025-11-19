@@ -1,42 +1,51 @@
+// com/example/todo/ui/TaskViewModel.kt
 package com.example.todo.ui
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import androidx.lifecycle.viewModelScope
+import com.example.todo.data.TaskRepository
 import com.example.todo.model.Priority
-import com.example.todo.model.Task
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
-class TaskViewModel : ViewModel() {
-    private val _tasks = MutableStateFlow<List<Task>>(emptyList())
-    val tasks = _tasks.asStateFlow()
+class TaskViewModel(
+    private val repository: TaskRepository
+) : ViewModel() {
 
+    // READ: expose tasks from DB as StateFlow
+    val tasks = repository.tasks
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Eagerly,
+            initialValue = emptyList()
+        )
+
+    // CREATE
     fun addTask(title: String, prio: Priority) {
-        val current = _tasks.value.toMutableList()
-        val nextOrder = current.size
-        current.add(Task(title = title, priority = prio, order = nextOrder))
-        _tasks.value = current
-    }
-
-    fun toggleDone(id: String) {
-        _tasks.value = _tasks.value.map { if (it.id == id) it.copy(done = !it.done) else it }
-    }
-
-    fun deleteAt(position: Int) {
-        val current = _tasks.value.toMutableList()
-        if (position in current.indices) {
-            current.removeAt(position)
-            current.forEachIndexed { idx, t -> t.order = idx }
-            _tasks.value = current
+        viewModelScope.launch {
+            repository.addTask(title, prio)
         }
     }
 
+    // UPDATE
+    fun toggleDone(id: String) {
+        viewModelScope.launch {
+            repository.toggleDone(id)
+        }
+    }
+
+    // DELETE
+    fun deleteAt(position: Int) {
+        viewModelScope.launch {
+            repository.deleteAt(position)
+        }
+    }
+
+    // MOVE
     fun move(from: Int, to: Int) {
-        val current = _tasks.value.toMutableList()
-        if (from in current.indices && to in current.indices) {
-            val item = current.removeAt(from)
-            current.add(to, item)
-            current.forEachIndexed { idx, t -> t.order = idx }
-            _tasks.value = current
+        viewModelScope.launch {
+            repository.move(from, to)
         }
     }
 }
