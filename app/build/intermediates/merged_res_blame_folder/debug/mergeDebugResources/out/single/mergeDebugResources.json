@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "com.example.todo.app-debug-37:/layout_dialog_add_task.xml.flat",
+        "source": "com.example.todo.app-main-39:/layout/dialog_add_task.xml"
+    },
+    {
+        "merged": "com.example.todo.app-debug-37:/layout_activity_main.xml.flat",
+        "source": "com.example.todo.app-main-39:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.todo.app-debug-37:/drawable_ic_add_24.xml.flat",
+        "source": "com.example.todo.app-main-39:/drawable/ic_add_24.xml"
+    },
+    {
+        "merged": "com.example.todo.app-debug-37:/layout_item_task.xml.flat",
+        "source": "com.example.todo.app-main-39:/layout/item_task.xml"
+    }
+]

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="priorities">
+        <item>HIGH</item>
+        <item>MEDIUM</item>
+        <item>LOW</item>
+    </string-array>
+    <string name="add">Legg til</string>
+    <string name="add_task">Legg til</string>
+    <string name="app_name">Todo List</string>
+    <string name="cancel">Avbryt</string>
+    <string name="new_task">Ny oppgave</string>
+    <style name="Theme.TodoList" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+</resources>

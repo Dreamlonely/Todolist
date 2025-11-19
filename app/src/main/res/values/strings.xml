@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Todo List</string>
+    <string name="add">Legg til</string>
+    <string name="new_task">Ny oppgave</string>
+    <string name="add_task">Legg til</string>
+    <string name="cancel">Avbryt</string>
+</resources>
