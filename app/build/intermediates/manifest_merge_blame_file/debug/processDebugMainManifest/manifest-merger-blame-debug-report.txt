@@ -20,34 +20,34 @@
 15-->[androidx.core:core:1.13.1] /Users/estebanvillacorta/.gradle/caches/8.13/transforms/73b2cf3fcd27015646c833349c0a1997/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:4:5-15:19
+17-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:4:5-15:19
 18        android:allowBackup="true"
-18-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:5:9-35
+18-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:5:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 19-->[androidx.core:core:1.13.1] /Users/estebanvillacorta/.gradle/caches/8.13/transforms/73b2cf3fcd27015646c833349c0a1997/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 20        android:debuggable="true"
 21        android:extractNativeLibs="false"
 22        android:label="@string/app_name"
-22-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:6:9-41
+22-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:6:9-41
 23        android:supportsRtl="true"
-23-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:7:9-35
+23-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:7:9-35
 24        android:theme="@style/Theme.TodoList" >
-24-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:8:9-46
+24-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:8:9-46
 25        <activity
-25-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:9:9-14:20
+25-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:9:9-14:20
 26            android:name="com.example.todo.MainActivity"
-26-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:9:19-47
+26-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:9:19-47
 27            android:exported="true" >
-27-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:9:48-71
+27-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:9:48-71
 28            <intent-filter>
-28-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:10:13-13:29
+28-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:10:13-13:29
 29                <action android:name="android.intent.action.MAIN" />
-29-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:11:17-69
-29-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:11:25-66
+29-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:11:17-69
+29-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:11:25-66
 30
 31                <category android:name="android.intent.category.LAUNCHER" />
-31-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:12:17-77
-31-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/Exam/Todolist/app/src/main/AndroidManifest.xml:12:27-74
+31-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:12:17-77
+31-->/Users/estebanvillacorta/Documents/USN/3rd year/MOB3000/MOB3000-Exam/To-do-list/app/src/main/AndroidManifest.xml:12:27-74
 32            </intent-filter>
 33        </activity>
 34
