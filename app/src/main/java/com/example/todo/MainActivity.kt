@@ -1,11 +1,13 @@
 package com.example.todo
 
+import android.Manifest
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -43,6 +45,14 @@ class MainActivity : AppCompatActivity() {
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
 
+        // Request notification permission on Android 13+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1001)
+            }
+        }
+
+        // RecyclerView setup
         val adapter = TaskAdapter(vm::toggleDone, this::showEditTaskDialog)
         b.recycler.layoutManager = LinearLayoutManager(this)
         b.recycler.adapter = adapter
@@ -86,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         })
         helper.attachToRecyclerView(b.recycler)
 
+        // Observe tasks
         lifecycleScope.launch {
             vm.tasks.collectLatest {
                 allTasks = it
@@ -93,6 +104,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // FAB to add new task
         b.fabAdd.setOnClickListener { showAddDialog() }
     }
 
@@ -148,8 +160,6 @@ class MainActivity : AppCompatActivity() {
     private fun showEditTaskDialog(task: Task) {
         val dialogBinding = DialogAddTaskBinding.inflate(LayoutInflater.from(this))
         dialogBinding.edtTitle.setText(task.title)
-
-        // Priority spinner
         dialogBinding.spnPriority.adapter = ArrayAdapter.createFromResource(
             this, R.array.priorities, android.R.layout.simple_spinner_item
         )
@@ -161,7 +171,6 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-        // Calendar for date/time
         val calendar = Calendar.getInstance()
         var selectedDueDate = task.dueDate
         task.dueDate?.let { calendar.timeInMillis = it }
@@ -169,7 +178,6 @@ class MainActivity : AppCompatActivity() {
         val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
         dialogBinding.txtDueDate.text = task.dueDate?.let { "Due: ${formatter.format(calendar.time)}" } ?: "No due date"
 
-        // Pick date/time
         dialogBinding.txtDueDate.setOnClickListener {
             pickDateTime(calendar) { timeInMillis ->
                 selectedDueDate = timeInMillis
@@ -198,7 +206,6 @@ class MainActivity : AppCompatActivity() {
             .setNegativeButton("Cancel", null)
             .show()
     }
-
 
     private fun pickDateTime(calendar: Calendar, onPicked: (Long) -> Unit) {
         val year = calendar.get(Calendar.YEAR)

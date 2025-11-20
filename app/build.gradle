@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'com.example.todo'
-    compileSdk 34          // 👈 ADD THIS LINE
+    compileSdk 34
 
     defaultConfig {
         applicationId 'com.example.todo'
@@ -35,7 +35,6 @@ android {
     }
 }
 
-
 dependencies {
     implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'androidx.appcompat:appcompat:1.7.0'
@@ -45,10 +44,12 @@ dependencies {
     implementation 'androidx.activity:activity-ktx:1.9.2'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.6'
 
-    def room_version = "2.6.1" // or the latest version your template suggests
+    def room_version = "2.6.1"
 
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
+    // WorkManager for notifications
+    implementation "androidx.work:work-runtime-ktx:2.8.1"
 }

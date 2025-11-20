@@ -13,9 +13,9 @@ class TaskViewModelFactory(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TaskViewModel::class.java)) {
             val db = AppDatabase.getInstance(app)
-            val repo = TaskRepository(db.taskDao())
+            val repo = TaskRepository(db.taskDao(), app)
             @Suppress("UNCHECKED_CAST")
-            return TaskViewModel(repo) as T
+            return TaskViewModel(repo, app) as T // ✅ pass 'app' here
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
