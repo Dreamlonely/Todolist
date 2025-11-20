@@ -10,6 +10,6 @@ data class Task(
     val title: String,
     val priority: Priority,
     val done: Boolean = false,
-    var order: Int = 0,
-    var dueDate: Long? = null    // 👈 NEW
+    val order: Int = 0,
+    val dueDate: Long? = null
 )

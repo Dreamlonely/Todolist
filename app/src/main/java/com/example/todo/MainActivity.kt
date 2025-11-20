@@ -148,6 +148,8 @@ class MainActivity : AppCompatActivity() {
     private fun showEditTaskDialog(task: Task) {
         val dialogBinding = DialogAddTaskBinding.inflate(LayoutInflater.from(this))
         dialogBinding.edtTitle.setText(task.title)
+
+        // Priority spinner
         dialogBinding.spnPriority.adapter = ArrayAdapter.createFromResource(
             this, R.array.priorities, android.R.layout.simple_spinner_item
         )
@@ -159,14 +161,18 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
+        // Calendar for date/time
         val calendar = Calendar.getInstance()
+        var selectedDueDate = task.dueDate
         task.dueDate?.let { calendar.timeInMillis = it }
+
         val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
         dialogBinding.txtDueDate.text = task.dueDate?.let { "Due: ${formatter.format(calendar.time)}" } ?: "No due date"
 
+        // Pick date/time
         dialogBinding.txtDueDate.setOnClickListener {
             pickDateTime(calendar) { timeInMillis ->
-                task.dueDate = timeInMillis
+                selectedDueDate = timeInMillis
                 dialogBinding.txtDueDate.text = "Due: ${formatter.format(calendar.time)}"
             }
         }
@@ -184,7 +190,7 @@ class MainActivity : AppCompatActivity() {
                             1 -> Priority.MEDIUM
                             else -> Priority.LOW
                         },
-                        dueDate = calendar.timeInMillis
+                        dueDate = selectedDueDate
                     )
                     vm.updateTask(updatedTask)
                 }
@@ -192,6 +198,7 @@ class MainActivity : AppCompatActivity() {
             .setNegativeButton("Cancel", null)
             .show()
     }
+
 
     private fun pickDateTime(calendar: Calendar, onPicked: (Long) -> Unit) {
         val year = calendar.get(Calendar.YEAR)
