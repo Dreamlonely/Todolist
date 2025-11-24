@@ -1,3 +1,4 @@
+// com/example/todo/data/TaskDao.kt
 package com.example.todo.data
 
 import androidx.room.*
@@ -7,8 +8,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TaskDao {
 
-    // READ
-    @Query("SELECT * FROM tasks ORDER BY `order` ASC")
+    // READ - sorted by our explicit task_order column
+    @Query("SELECT * FROM tasks ORDER BY task_order ASC")
     fun getAllTasks(): Flow<List<Task>>
 
     // CREATE

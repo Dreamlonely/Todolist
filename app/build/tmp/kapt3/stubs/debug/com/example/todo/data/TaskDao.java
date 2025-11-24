@@ -4,7 +4,7 @@ package com.example.todo.data;
 @androidx.room.Dao()
 public abstract interface TaskDao {
     
-    @androidx.room.Query(value = "SELECT * FROM tasks ORDER BY `order` ASC")
+    @androidx.room.Query(value = "SELECT * FROM tasks ORDER BY task_order ASC")
     @org.jetbrains.annotations.NotNull()
     public abstract kotlinx.coroutines.flow.Flow<java.util.List<com.example.todo.model.Task>> getAllTasks();
     

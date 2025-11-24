@@ -1,5 +1,7 @@
+// com/example/todo/model/Task.kt
 package com.example.todo.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.UUID
@@ -10,6 +12,10 @@ data class Task(
     val title: String,
     val priority: Priority,
     val done: Boolean = false,
+
+    // Use a safe column name in DB to avoid confusion with SQL keyword ORDER
+    @ColumnInfo(name = "task_order")
     val order: Int = 0,
+
     val dueDate: Long? = null
 )

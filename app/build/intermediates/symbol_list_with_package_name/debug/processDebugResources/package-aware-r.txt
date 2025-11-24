@@ -3196,12 +3196,14 @@ id beginning
 id bestChoice
 id blocking
 id bottom
+id bottomNav
 id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
 id buttonPanel
 id cache_measures
+id calendarView
 id callMeasure
 id cancel_button
 id carryVelocity
@@ -3277,7 +3279,7 @@ id east
 id edge
 id edit_query
 id edit_text_id
-id edtSearch
+id edtSearchTools
 id edtTitle
 id elastic
 id embed
@@ -3306,6 +3308,7 @@ id fixed
 id flip
 id floating
 id forever
+id fragmentContainer
 id fragment_container_view_tag
 id frost
 id fullscreen_header
@@ -3411,6 +3414,9 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id nav_calendar
+id nav_home
+id nav_tools
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3471,6 +3477,7 @@ id radio
 id ratio
 id rectangles
 id recycler
+id recyclerDayTasks
 id report_drawn
 id reverseSawtooth
 id right
@@ -3516,6 +3523,10 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id sortDefault
+id sortDueLatest
+id sortDueSoon
+id sortHighLow
 id south
 id spacer
 id special_effects_controller_view_tag
@@ -3578,7 +3589,6 @@ id titleDividerNoCustom
 id title_template
 id toggle
 id top
-id topAppBar
 id topPanel
 id touch_outside
 id transitionToEnd
@@ -3593,6 +3603,7 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id txtDueDate
+id txtTasksForDay
 id txtTitle
 id unchecked
 id uniform
@@ -3732,6 +3743,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout bottom_sheet_tools
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3750,6 +3762,8 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_add_task
 layout dialog_edit_task
+layout fragment_calendar
+layout fragment_home
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_task
@@ -3814,6 +3828,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu bottom_nav_menu
 menu main_menu
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description

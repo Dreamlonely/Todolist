@@ -4,17 +4,14 @@ package com.example.todo.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.todo.R;
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -24,29 +21,16 @@ public final class ActivityMainBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final LinearLayout content;
+  public final BottomNavigationView bottomNav;
 
   @NonNull
-  public final EditText edtSearch;
+  public final FrameLayout fragmentContainer;
 
-  @NonNull
-  public final FloatingActionButton fabAdd;
-
-  @NonNull
-  public final RecyclerView recycler;
-
-  @NonNull
-  public final MaterialToolbar topAppBar;
-
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull LinearLayout content,
-      @NonNull EditText edtSearch, @NonNull FloatingActionButton fabAdd,
-      @NonNull RecyclerView recycler, @NonNull MaterialToolbar topAppBar) {
+  private ActivityMainBinding(@NonNull ConstraintLayout rootView,
+      @NonNull BottomNavigationView bottomNav, @NonNull FrameLayout fragmentContainer) {
     this.rootView = rootView;
-    this.content = content;
-    this.edtSearch = edtSearch;
-    this.fabAdd = fabAdd;
-    this.recycler = recycler;
-    this.topAppBar = topAppBar;
+    this.bottomNav = bottomNav;
+    this.fragmentContainer = fragmentContainer;
   }
 
   @Override
@@ -76,38 +60,19 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.content;
-      LinearLayout content = ViewBindings.findChildViewById(rootView, id);
-      if (content == null) {
+      id = R.id.bottomNav;
+      BottomNavigationView bottomNav = ViewBindings.findChildViewById(rootView, id);
+      if (bottomNav == null) {
         break missingId;
       }
 
-      id = R.id.edtSearch;
-      EditText edtSearch = ViewBindings.findChildViewById(rootView, id);
-      if (edtSearch == null) {
+      id = R.id.fragmentContainer;
+      FrameLayout fragmentContainer = ViewBindings.findChildViewById(rootView, id);
+      if (fragmentContainer == null) {
         break missingId;
       }
 
-      id = R.id.fabAdd;
-      FloatingActionButton fabAdd = ViewBindings.findChildViewById(rootView, id);
-      if (fabAdd == null) {
-        break missingId;
-      }
-
-      id = R.id.recycler;
-      RecyclerView recycler = ViewBindings.findChildViewById(rootView, id);
-      if (recycler == null) {
-        break missingId;
-      }
-
-      id = R.id.topAppBar;
-      MaterialToolbar topAppBar = ViewBindings.findChildViewById(rootView, id);
-      if (topAppBar == null) {
-        break missingId;
-      }
-
-      return new ActivityMainBinding((ConstraintLayout) rootView, content, edtSearch, fabAdd,
-          recycler, topAppBar);
+      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNav, fragmentContainer);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

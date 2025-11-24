@@ -1,3 +1,4 @@
+// com/example/todo/data/TaskRepository.kt
 package com.example.todo.data
 
 import android.content.Context
@@ -7,7 +8,10 @@ import com.example.todo.notifications.TaskReminderWorker
 import kotlinx.coroutines.flow.firstOrNull
 import java.util.concurrent.TimeUnit
 
-class TaskRepository(private val dao: TaskDao, private val context: Context) {
+class TaskRepository(
+    private val dao: TaskDao,
+    private val context: Context
+) {
 
     // READ
     val tasks = dao.getAllTasks()
@@ -31,7 +35,7 @@ class TaskRepository(private val dao: TaskDao, private val context: Context) {
         dao.updateTask(task.copy(done = !task.done))
     }
 
-    // DELETE at position
+    // DELETE at position (position in DB order)
     suspend fun deleteAt(position: Int) {
         val currentList = dao.getAllTasks().firstOrNull() ?: return
         if (position !in currentList.indices) return
@@ -46,7 +50,7 @@ class TaskRepository(private val dao: TaskDao, private val context: Context) {
         dao.updateTasks(reordered)
     }
 
-    // MOVE (reorder)
+    // MOVE (reorder) – indices are in DB order
     suspend fun move(from: Int, to: Int) {
         val currentList = dao.getAllTasks().firstOrNull() ?: return
         if (from !in currentList.indices || to !in currentList.indices) return

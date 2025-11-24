@@ -48,7 +48,7 @@ public final class TaskDao_Impl implements TaskDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `tasks` (`id`,`title`,`priority`,`done`,`order`,`dueDate`) VALUES (?,?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `tasks` (`id`,`title`,`priority`,`done`,`task_order`,`dueDate`) VALUES (?,?,?,?,?,?)";
       }
 
       @Override
@@ -101,7 +101,7 @@ public final class TaskDao_Impl implements TaskDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `tasks` SET `id` = ?,`title` = ?,`priority` = ?,`done` = ?,`order` = ?,`dueDate` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `tasks` SET `id` = ?,`title` = ?,`priority` = ?,`done` = ?,`task_order` = ?,`dueDate` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -214,7 +214,7 @@ public final class TaskDao_Impl implements TaskDao {
 
   @Override
   public Flow<List<Task>> getAllTasks() {
-    final String _sql = "SELECT * FROM tasks ORDER BY `order` ASC";
+    final String _sql = "SELECT * FROM tasks ORDER BY task_order ASC";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     return CoroutinesRoom.createFlow(__db, false, new String[] {"tasks"}, new Callable<List<Task>>() {
       @Override
@@ -226,7 +226,7 @@ public final class TaskDao_Impl implements TaskDao {
           final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
           final int _cursorIndexOfPriority = CursorUtil.getColumnIndexOrThrow(_cursor, "priority");
           final int _cursorIndexOfDone = CursorUtil.getColumnIndexOrThrow(_cursor, "done");
-          final int _cursorIndexOfOrder = CursorUtil.getColumnIndexOrThrow(_cursor, "order");
+          final int _cursorIndexOfOrder = CursorUtil.getColumnIndexOrThrow(_cursor, "task_order");
           final int _cursorIndexOfDueDate = CursorUtil.getColumnIndexOrThrow(_cursor, "dueDate");
           final List<Task> _result = new ArrayList<Task>(_cursor.getCount());
           while (_cursor.moveToNext()) {

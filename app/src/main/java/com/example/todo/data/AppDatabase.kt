@@ -1,3 +1,4 @@
+// com/example/todo/data/AppDatabase.kt
 package com.example.todo.data
 
 import android.content.Context
@@ -10,7 +11,7 @@ import com.example.todo.model.Task
 
 @Database(
     entities = [Task::class],
-    version = 2,
+    version = 3,                // 🔸 bump version because schema changed
     exportSchema = false
 )
 @TypeConverters(PriorityConverter::class)
@@ -27,7 +28,10 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "todo_db"
-                ).build().also { INSTANCE = it }
+                )
+                    .fallbackToDestructiveMigration()   // 🔸 avoid migration crashes
+                    .build()
+                    .also { INSTANCE = it }
             }
     }
 }
