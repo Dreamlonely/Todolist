@@ -41,6 +41,11 @@
         </activity>
 
         <provider
+            android:name="com.prolificinteractive.materialcalendarview.MaterialCalendarViewInitProvider"
+            android:authorities="com.example.todo.materialcalendarviewinitprovider"
+            android:enabled="true"
+            android:exported="false" />
+        <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.example.todo.androidx-startup"
             android:exported="false" >

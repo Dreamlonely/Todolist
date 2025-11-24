@@ -1,42 +1,42 @@
 [
     {
-        "merged": "com.example.todo.app-debug-45:/menu_main_menu.xml.flat",
-        "source": "com.example.todo.app-main-47:/menu/main_menu.xml"
+        "merged": "com.example.todo.app-debug-47:/menu_main_menu.xml.flat",
+        "source": "com.example.todo.app-main-49:/menu/main_menu.xml"
     },
     {
-        "merged": "com.example.todo.app-debug-45:/layout_bottom_sheet_tools.xml.flat",
-        "source": "com.example.todo.app-main-47:/layout/bottom_sheet_tools.xml"
+        "merged": "com.example.todo.app-debug-47:/layout_dialog_add_task.xml.flat",
+        "source": "com.example.todo.app-main-49:/layout/dialog_add_task.xml"
     },
     {
-        "merged": "com.example.todo.app-debug-45:/layout_activity_main.xml.flat",
-        "source": "com.example.todo.app-main-47:/layout/activity_main.xml"
+        "merged": "com.example.todo.app-debug-47:/layout_dialog_edit_task.xml.flat",
+        "source": "com.example.todo.app-main-49:/layout/dialog_edit_task.xml"
     },
     {
-        "merged": "com.example.todo.app-debug-45:/layout_dialog_edit_task.xml.flat",
-        "source": "com.example.todo.app-main-47:/layout/dialog_edit_task.xml"
+        "merged": "com.example.todo.app-debug-47:/layout_item_task.xml.flat",
+        "source": "com.example.todo.app-main-49:/layout/item_task.xml"
     },
     {
-        "merged": "com.example.todo.app-debug-45:/layout_item_task.xml.flat",
-        "source": "com.example.todo.app-main-47:/layout/item_task.xml"
+        "merged": "com.example.todo.app-debug-47:/layout_fragment_home.xml.flat",
+        "source": "com.example.todo.app-main-49:/layout/fragment_home.xml"
     },
     {
-        "merged": "com.example.todo.app-debug-45:/menu_bottom_nav_menu.xml.flat",
-        "source": "com.example.todo.app-main-47:/menu/bottom_nav_menu.xml"
+        "merged": "com.example.todo.app-debug-47:/layout_fragment_calendar.xml.flat",
+        "source": "com.example.todo.app-main-49:/layout/fragment_calendar.xml"
     },
     {
-        "merged": "com.example.todo.app-debug-45:/layout_dialog_add_task.xml.flat",
-        "source": "com.example.todo.app-main-47:/layout/dialog_add_task.xml"
+        "merged": "com.example.todo.app-debug-47:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.example.todo.app-main-49:/menu/bottom_nav_menu.xml"
     },
     {
-        "merged": "com.example.todo.app-debug-45:/layout_fragment_calendar.xml.flat",
-        "source": "com.example.todo.app-main-47:/layout/fragment_calendar.xml"
+        "merged": "com.example.todo.app-debug-47:/layout_activity_main.xml.flat",
+        "source": "com.example.todo.app-main-49:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.todo.app-debug-45:/layout_fragment_home.xml.flat",
-        "source": "com.example.todo.app-main-47:/layout/fragment_home.xml"
+        "merged": "com.example.todo.app-debug-47:/drawable_ic_add_24.xml.flat",
+        "source": "com.example.todo.app-main-49:/drawable/ic_add_24.xml"
     },
     {
-        "merged": "com.example.todo.app-debug-45:/drawable_ic_add_24.xml.flat",
-        "source": "com.example.todo.app-main-47:/drawable/ic_add_24.xml"
+        "merged": "com.example.todo.app-debug-47:/layout_bottom_sheet_tools.xml.flat",
+        "source": "com.example.todo.app-main-49:/layout/bottom_sheet_tools.xml"
     }
 ]

@@ -857,6 +857,24 @@ attr maxLines
 attr maxNumber
 attr maxVelocity
 attr maxWidth
+attr mcv_allowClickDaysOutsideCurrentMonth
+attr mcv_calendarMode
+attr mcv_dateTextAppearance
+attr mcv_firstDayOfWeek
+attr mcv_headerTextAppearance
+attr mcv_leftArrow
+attr mcv_monthLabels
+attr mcv_rightArrow
+attr mcv_selectionColor
+attr mcv_selectionMode
+attr mcv_showOtherDates
+attr mcv_showWeekDays
+attr mcv_tileHeight
+attr mcv_tileSize
+attr mcv_tileWidth
+attr mcv_titleAnimationOrientation
+attr mcv_weekDayLabels
+attr mcv_weekDayTextAppearance
 attr measureWithLargestChild
 attr menu
 attr menuAlignmentMode
@@ -2027,6 +2045,8 @@ color material_timepicker_button_stroke
 color material_timepicker_clock_text_color
 color material_timepicker_clockface
 color material_timepicker_modebutton_tint
+color mcv_text_date_dark
+color mcv_text_date_light
 color mtrl_btn_bg_color_selector
 color mtrl_btn_ripple_color
 color mtrl_btn_stroke_color_selector
@@ -2084,6 +2104,7 @@ color mtrl_textinput_focused_box_stroke_color
 color mtrl_textinput_hovered_box_stroke_color
 color notification_action_color_filter
 color notification_icon_bg_color
+color notification_material_background_media_default_color
 color primary_dark_material_dark
 color primary_dark_material_light
 color primary_material_dark
@@ -2688,6 +2709,8 @@ dimen material_textinput_max_width
 dimen material_textinput_min_width
 dimen material_time_picker_minimum_screen_height
 dimen material_time_picker_minimum_screen_width
+dimen mcv_arrow_margin
+dimen mcv_arrow_padding
 dimen mtrl_alert_dialog_background_inset_bottom
 dimen mtrl_alert_dialog_background_inset_end
 dimen mtrl_alert_dialog_background_inset_start
@@ -2901,6 +2924,10 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen subtitle_corner_radius
+dimen subtitle_outline_width
+dimen subtitle_shadow_offset
+dimen subtitle_shadow_radius
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -3044,6 +3071,8 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable mcv_action_next
+drawable mcv_action_previous
 drawable mtrl_bottomsheet_drag_handle
 drawable mtrl_checkbox_button
 drawable mtrl_checkbox_button_checked_unchecked
@@ -3146,6 +3175,7 @@ id accessibility_custom_action_6
 id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
+id action0
 id actionDown
 id actionDownUp
 id actionUp
@@ -3205,6 +3235,7 @@ id buttonPanel
 id cache_measures
 id calendarView
 id callMeasure
+id cancel_action
 id cancel_button
 id carryVelocity
 id center
@@ -3247,7 +3278,9 @@ id date_picker_actions
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
+id decorated_disabled
 id default_activity_button
+id defaults
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -3285,6 +3318,7 @@ id elastic
 id embed
 id end
 id endToStart
+id end_padder
 id enterAlways
 id enterAlwaysCollapsed
 id escape
@@ -3310,6 +3344,7 @@ id floating
 id forever
 id fragmentContainer
 id fragment_container_view_tag
+id friday
 id frost
 id fullscreen_header
 id ghost_view
@@ -3320,12 +3355,14 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id header
 id header_title
 id hide_ime_id
 id hideable
 id home
 id homeAsUp
 id honorRequest
+id horizontal
 id horizontal_only
 id icon
 id icon_group
@@ -3380,10 +3417,15 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id matrix
+id mcv_pager
+id media_actions
 id message
 id middle
 id mini
+id monday
+id month
 id month_grid
+id month_name
 id month_navigation_bar
 id month_navigation_fragment_toggle
 id month_navigation_next
@@ -3413,6 +3455,7 @@ id mtrl_picker_text_input_range_end
 id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
+id multiple
 id multiply
 id nav_calendar
 id nav_home
@@ -3427,6 +3470,7 @@ id navigation_header_container
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
+id next
 id noScroll
 id noState
 id none
@@ -3452,6 +3496,8 @@ id open_search_view_search_prefix
 id open_search_view_status_bar_spacer
 id open_search_view_toolbar
 id open_search_view_toolbar_container
+id other_months
+id out_of_range
 id outline
 id outward
 id overshoot
@@ -3471,9 +3517,11 @@ id pooling_container_listener_holder_tag
 id position
 id postLayout
 id pressed
+id previous
 id progress_circular
 id progress_horizontal
 id radio
+id range
 id ratio
 id rectangles
 id recycler
@@ -3486,6 +3534,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id saturday
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3516,6 +3565,7 @@ id showCustom
 id showHome
 id showTitle
 id sin
+id single
 id skipCollapsed
 id skipped
 id slide
@@ -3548,10 +3598,12 @@ id startToEnd
 id startVertical
 id staticLayout
 id staticPostLayout
+id status_bar_latest_event_content
 id stop
 id stretch
 id submenuarrow
 id submit_area
+id sunday
 id supportScrollUp
 id tabMode
 id tag_accessibility_actions
@@ -3583,6 +3635,7 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id thursday
 id time
 id title
 id titleDividerNoCustom
@@ -3602,6 +3655,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tuesday
 id txtDueDate
 id txtTasksForDay
 id txtTitle
@@ -3610,6 +3664,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id vertical
 id vertical_only
 id view_offset_helper
 id view_transition
@@ -3619,6 +3674,8 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id wednesday
+id week
 id west
 id withText
 id with_icon
@@ -3744,6 +3801,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout bottom_sheet_tools
+layout calendar_view
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3820,8 +3878,17 @@ layout mtrl_search_bar
 layout mtrl_search_view
 layout notification_action
 layout notification_action_tombstone
+layout notification_media_action
+layout notification_media_cancel_action
+layout notification_template_big_media
+layout notification_template_big_media_custom
+layout notification_template_big_media_narrow
+layout notification_template_big_media_narrow_custom
 layout notification_template_custom_big
 layout notification_template_icon_group
+layout notification_template_lines_media
+layout notification_template_media
+layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout select_dialog_item_material
@@ -3869,6 +3936,7 @@ string bottomsheet_action_expand
 string bottomsheet_action_expand_halfway
 string bottomsheet_drag_handle_clicked
 string bottomsheet_drag_handle_content_description
+string calendar
 string call_notification_answer_action
 string call_notification_answer_video_action
 string call_notification_decline_action
@@ -3990,11 +4058,13 @@ string mtrl_switch_track_path
 string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
 string new_task
+string next
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string previous
 string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
@@ -4455,9 +4525,14 @@ style TextAppearance_AppCompat_Widget_Switch
 style TextAppearance_AppCompat_Widget_TextView_SpinnerItem
 style TextAppearance_Compat_Notification
 style TextAppearance_Compat_Notification_Info
+style TextAppearance_Compat_Notification_Info_Media
 style TextAppearance_Compat_Notification_Line2
+style TextAppearance_Compat_Notification_Line2_Media
+style TextAppearance_Compat_Notification_Media
 style TextAppearance_Compat_Notification_Time
+style TextAppearance_Compat_Notification_Time_Media
 style TextAppearance_Compat_Notification_Title
+style TextAppearance_Compat_Notification_Title_Media
 style TextAppearance_Design_CollapsingToolbar_Expanded
 style TextAppearance_Design_Counter
 style TextAppearance_Design_Counter_Overflow
@@ -4505,6 +4580,9 @@ style TextAppearance_Material3_SearchView_Prefix
 style TextAppearance_Material3_TitleLarge
 style TextAppearance_Material3_TitleMedium
 style TextAppearance_Material3_TitleSmall
+style TextAppearance_MaterialCalendarWidget_Date
+style TextAppearance_MaterialCalendarWidget_Header
+style TextAppearance_MaterialCalendarWidget_WeekDay
 style TextAppearance_MaterialComponents_Badge
 style TextAppearance_MaterialComponents_Body1
 style TextAppearance_MaterialComponents_Body2
@@ -5212,6 +5290,7 @@ styleable MaterialButton android_background android_insetLeft android_insetRight
 styleable MaterialButtonToggleGroup android_enabled checkedButton selectionRequired singleSelection
 styleable MaterialCalendar android_windowFullscreen backgroundTint dayInvalidStyle daySelectedStyle dayStyle dayTodayStyle nestedScrollable rangeFillColor yearSelectedStyle yearStyle yearTodayStyle
 styleable MaterialCalendarItem android_insetLeft android_insetRight android_insetTop android_insetBottom itemFillColor itemShapeAppearance itemShapeAppearanceOverlay itemStrokeColor itemStrokeWidth itemTextColor
+styleable MaterialCalendarView mcv_allowClickDaysOutsideCurrentMonth mcv_calendarMode mcv_dateTextAppearance mcv_firstDayOfWeek mcv_headerTextAppearance mcv_leftArrow mcv_monthLabels mcv_rightArrow mcv_selectionColor mcv_selectionMode mcv_showOtherDates mcv_showWeekDays mcv_tileHeight mcv_tileSize mcv_tileWidth mcv_titleAnimationOrientation mcv_weekDayLabels mcv_weekDayTextAppearance
 styleable MaterialCardView android_checkable cardForegroundColor checkedIcon checkedIconGravity checkedIconMargin checkedIconSize checkedIconTint rippleColor shapeAppearance shapeAppearanceOverlay state_dragged strokeColor strokeWidth
 styleable MaterialCheckBox android_button buttonCompat buttonIcon buttonIconTint buttonIconTintMode buttonTint centerIfNoTextEnabled checkedState errorAccessibilityLabel errorShown useMaterialThemeColors
 styleable MaterialCheckBoxStates state_error state_indeterminate

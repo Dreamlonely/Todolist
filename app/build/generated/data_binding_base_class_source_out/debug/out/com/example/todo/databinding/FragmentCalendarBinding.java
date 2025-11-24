@@ -4,7 +4,6 @@ package com.example.todo.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.todo.R;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -22,7 +22,7 @@ public final class FragmentCalendarBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final CalendarView calendarView;
+  public final MaterialCalendarView calendarView;
 
   @NonNull
   public final RecyclerView recyclerDayTasks;
@@ -31,7 +31,7 @@ public final class FragmentCalendarBinding implements ViewBinding {
   public final TextView txtTasksForDay;
 
   private FragmentCalendarBinding(@NonNull ConstraintLayout rootView,
-      @NonNull CalendarView calendarView, @NonNull RecyclerView recyclerDayTasks,
+      @NonNull MaterialCalendarView calendarView, @NonNull RecyclerView recyclerDayTasks,
       @NonNull TextView txtTasksForDay) {
     this.rootView = rootView;
     this.calendarView = calendarView;
@@ -67,7 +67,7 @@ public final class FragmentCalendarBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.calendarView;
-      CalendarView calendarView = ViewBindings.findChildViewById(rootView, id);
+      MaterialCalendarView calendarView = ViewBindings.findChildViewById(rootView, id);
       if (calendarView == null) {
         break missingId;
       }
