@@ -1,6 +1,10 @@
 package com.example.todo.ui
 
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +14,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todo.databinding.FragmentCalendarBinding
 import com.example.todo.model.Task
-import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.*
+import com.prolificinteractive.materialcalendarview.spans.DotSpan
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
+import java.util.*
 
 class CalendarFragment : Fragment() {
 
@@ -29,9 +33,11 @@ class CalendarFragment : Fragment() {
     private var allTasks: List<Task> = emptyList()
     private var selectedDayStartMillis: Long = startOfToday()
 
-    // Dot color
-    private val dotPurple = 0xFF6200EE.toInt()
-    private val selectionLightPurple = 0x88D1C4E9.toInt() // transparent light purple
+    private var dateTextColor = Color.BLACK
+    private var selectionColor = Color.argb(136, 209, 196, 233) // default light mode
+    private val dotColor = 0xFF6200EE.toInt() // purple
+
+    private lateinit var currentMonthDecorator: DayViewDecorator
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,23 +51,60 @@ class CalendarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Detect dark/light mode
+        val isDarkMode = resources.configuration.uiMode and
+                android.content.res.Configuration.UI_MODE_NIGHT_MASK ==
+                android.content.res.Configuration.UI_MODE_NIGHT_YES
+
+        // Colors based on mode
+        dateTextColor = if (isDarkMode) Color.WHITE else Color.BLACK
+        selectionColor = if (isDarkMode) Color.argb(85, 187, 134, 252) else Color.argb(136, 209, 196, 233)
+        val arrowColor = if (isDarkMode) Color.WHITE else Color.BLACK
+
+        // Apply selection color
+        b.calendarView.setSelectionColor(selectionColor)
+
+        // Apply arrow tint
+        val arrowFilter = PorterDuffColorFilter(arrowColor, PorterDuff.Mode.SRC_IN)
+        b.calendarView.leftArrow.setColorFilter(arrowFilter)
+        b.calendarView.rightArrow.setColorFilter(arrowFilter)
+
+        // Decorator for current month day text color
+        currentMonthDecorator = object : DayViewDecorator {
+            override fun shouldDecorate(day: CalendarDay): Boolean {
+                val month = b.calendarView.currentDate.month
+                val year = b.calendarView.currentDate.year
+                return day.month == month && day.year == year
+            }
+
+            override fun decorate(view: DayViewFacade) {
+                view.addSpan(ForegroundColorSpan(dateTextColor))
+            }
+        }
+        b.calendarView.addDecorator(currentMonthDecorator)
+
+        // Refresh decorator & dots on month change
+        b.calendarView.setOnMonthChangedListener { _, _ ->
+            b.calendarView.removeDecorator(currentMonthDecorator)
+            b.calendarView.addDecorator(currentMonthDecorator)
+            updateCalendarDots()
+        }
+
         val dayAdapter = TaskAdapter(onToggle = vm::toggleDone, onEdit = {})
         b.recyclerDayTasks.layoutManager = LinearLayoutManager(requireContext())
         b.recyclerDayTasks.adapter = dayAdapter
 
-        // MaterialCalendarView date click
+        // Highlight selected day and show tasks
         b.calendarView.setOnDateChangedListener { _, date, _ ->
-            // Convert CalendarDay to millis at start of day
             val cal = Calendar.getInstance().apply {
-                set(date.year, date.month - 1, date.day, 0, 0, 0) // subtract 1: Calendar.MONTH is 0-based
+                set(date.year, date.month - 1, date.day, 0, 0, 0)
                 set(Calendar.MILLISECOND, 0)
             }
             selectedDayStartMillis = cal.timeInMillis
             updateTasksForSelectedDay(dayAdapter)
         }
 
-        b.calendarView.setSelectionColor(selectionLightPurple)
-
+        // Observe tasks from ViewModel
         viewLifecycleOwner.lifecycleScope.launch {
             vm.tasks.collectLatest { tasks ->
                 allTasks = tasks
@@ -73,13 +116,18 @@ class CalendarFragment : Fragment() {
 
     private fun updateCalendarDots() {
         val datesWithTasks = allTasks.mapNotNull { it.dueDate }.map { millis ->
-            val cal = Calendar.getInstance().apply { timeInMillis = millis }
-            // Calendar.MONTH is 0-based, CalendarDay expects 1-based
+            Calendar.getInstance().apply { timeInMillis = millis }
+        }.map { cal ->
             CalendarDay.from(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH))
         }.toSet()
 
-        b.calendarView.removeDecorators()
-        b.calendarView.addDecorator(EventDecorator(datesWithTasks, dotPurple))
+        // Keep month decorator
+        b.calendarView.removeDecorators().apply {
+            b.calendarView.addDecorator(currentMonthDecorator)
+        }
+
+        // Add dots for tasks
+        b.calendarView.addDecorator(EventDecorator(datesWithTasks, dotColor))
     }
 
     private fun updateTasksForSelectedDay(adapter: TaskAdapter) {
@@ -109,5 +157,15 @@ class CalendarFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _b = null
+    }
+
+    class EventDecorator(
+        private val dates: Set<CalendarDay>,
+        private val color: Int
+    ) : DayViewDecorator {
+        override fun shouldDecorate(day: CalendarDay): Boolean = dates.contains(day)
+        override fun decorate(view: DayViewFacade) {
+            view.addSpan(DotSpan(8f, color))
+        }
     }
 }
